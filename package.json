@@ -1,0 +1,18 @@
+{
+  "name": "brushstrokes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wright": "wright index.html --run s.redraw --debug 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "wright": "^1.3.1"
+  },
+  "dependencies": {
+    "sin": "^1.0.0-beta14"
+  }
+}
