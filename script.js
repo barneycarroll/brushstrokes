@@ -8,6 +8,11 @@ const Stroke = ({outer, inner}) =>
     },
   })
 
+const Underline = x =>
+  s`span.Underline
+    border-bottom 1px solid
+  `(x)
+
 const Ticket = () => 
   s`.Ticket
     padding .7em 1.5em
@@ -16,12 +21,17 @@ const Ticket = () =>
     box-sizing border-box
     border-bottom 1px dashed #864
   `(
-    'www.brushstrokes.courses', s`br`,
+    Underline('www.brushstrokes.courses'), s`br`,
     'brushstrokes.courses@gmail.com', s`br`,
     s`span
       font-weight 500
     `('Laura Truesdale '), '07854130817', s`br`,
   )
+
+const White = x => 
+  s`span.White
+    color white
+  `(x)
 
 s.mount(() =>
   s`.App.font4
@@ -39,7 +49,7 @@ s.mount(() =>
     font-size 1rem
     color #fa1
 
-    background-image    url(./img/laura_portrait.jpg) 
+    background-image    url(./img/Sharpened_laura.jpg) 
     background-size     23cm
     background-position 0 50%
 
@@ -47,6 +57,21 @@ s.mount(() =>
       margin 1em 0
     }
 	`(
+    Stroke({
+      outer: `
+        top: -4.5cm;
+        left: -13cm;
+        width: 130cm;
+        position: absolute;
+        transform: rotate(-.5deg);
+      `,
+      inner: `
+        path {
+          fill: #a55 !important;
+        }
+      `
+    }),
+
     Stroke({
       outer: `
         top: -4cm;
@@ -57,6 +82,21 @@ s.mount(() =>
       inner: `
         path {
           fill: #364 !important;
+        }
+      `
+    }),
+
+    Stroke({
+      outer: `
+        top: 23.5cm;
+        left: -12cm;
+        width: 158cm;
+        position: absolute;
+        transform: rotate(-5.5deg); 
+      `,
+      inner: `
+        path {
+          fill: #a55 !important;
         }
       `
     }),
@@ -118,20 +158,26 @@ s.mount(() =>
       width 22.7cm
       padding 3rem
     `(
-      s`h1.font1
-        margin -1rem 0 0
-        font-size 3.88rem
+      s`.Header
+        transform-origin 0
+        transform scale(1.1666)
       `(
-        s`span
-          border-bottom .075cm solid
-          padding-bottom .7rem
+        s`h1.font1
+          margin -1rem 0 0
+          font-size 3.95rem
         `(
-          'BRUSHSTROKES.COURSES'
+          s`span
+            border-bottom .075cm solid
+            padding-bottom .7rem
+          `(
+            White('BRUSHSTROKES'), '.COURSES'
+          ),
         ),
-      ),
 
-      s`h2`(
-        '6-week portraiture course with Qualified Teacher Status accredited artist Laura Truesdale'
+        s`h2`(
+          White('6-week portraiture course '), 
+          'with Qualified Teacher Status accredited artist Laura Truesdale',
+        ),
       ),
 
       s`.Footer
@@ -168,6 +214,7 @@ s.mount(() =>
         s`.Box`(
           s`table
             font-size 1.333rem
+            font-weight bold
             margin .9rem 0
             border-collapse collapse
     
@@ -219,7 +266,7 @@ s.mount(() =>
         font-size 1.3rem
         text-align center 
       `(
-        'www.brushstrokes.courses', s`br`,
+        Underline('www.brushstrokes.courses'), s`br`,
         'brushstrokes.courses@gmail.com', s`br`,
         s`span
           font-weight 500
