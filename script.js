@@ -2,31 +2,11 @@ import s from './node_modules/sin/dist/sin.esm.js'
 
 const Stroke = ({outer, inner}) => 
   s`object[type=image/svg+xml][data=./img/stroke.svg]`({
-    style: outer,
-    onload: e => {
+    style  : outer,
+    onload : e => {
       e.target.getSVGDocument().querySelector('style').textContent = inner
     },
   })
-
-const Underline = x =>
-  s`span.Underline
-    border-bottom 1px solid
-  `(x)
-
-const Ticket = () => 
-  s`.Ticket
-    padding .7em 1.5em
-    font-weight bold
-    height 2.333333333333cm
-    box-sizing border-box
-    border-bottom 1px dashed #864
-  `(
-    Underline('www.brushstrokes.courses'), s`br`,
-    'brushstrokes.courses@gmail.com', s`br`,
-    s`span
-      font-weight 500
-    `('Laura Truesdale '), '07854130817', s`br`,
-  )
 
 const White = x => 
   s`span.White
@@ -43,20 +23,41 @@ s.mount(() =>
 
 		top 0 
     left 0 
-    width 29.7cm
+    width 23cm
     height 42cm
     
     font-size 1rem
     color #fa1
 
-    background-image    url(./img/Sharpened_laura.jpg) 
+    background-image    url(./img/sharp_laura_optimized.jpg) 
     background-size     23cm
     background-position 0 50%
+
+    transform-origin    0 0
 
     p {
       margin 1em 0
     }
-	`(
+
+    a {
+      color inherit
+    }
+	`({
+    life: dom => {
+      let   tick
+      const bang = () =>
+        dom.style.transform = `scale(${
+          innerWidth / dom.clientWidth
+        })`
+      
+      bang()
+
+      onresize = () => (
+        clearTimeout(tick),
+        tick = setTimeout(bang, 100)
+      )
+    }
+  },
     Stroke({
       outer: `
         top: -4.5cm;
@@ -130,58 +131,37 @@ s.mount(() =>
       `
     }),
 
-    s`.Tickets
-      padding-top 1px
-      box-sizing border-box
-      position absolute
-      top 0
-      right 0
-      height 100%
-      width 7cm
-      background #fa1
-
-      font-size .9rem
-      color #444
-
-      border-left 1px solid
-    `(
-      Array
-        .from({length: 100})
-        .map(() => 
-          Ticket
-        ),
-    ),
-
     s`.Content
       position relative
       box-sizing border-box
-      width 22.7cm
       padding 3rem
+
+      transform-origin 0 0 
     `(
-      s`.Header
-        transform-origin 0
-        transform scale(1.1666)
-      `(
+      s`.Header`(
         s`h1.font1
           margin -1rem 0 0
-          font-size 3.95rem
+          font-size 4.6rem
         `(
           s`span
             border-bottom .075cm solid
             padding-bottom .7rem
+            whitespace no-wrap
           `(
             White('BRUSHSTROKES'), '.COURSES'
           ),
         ),
 
-        s`h2`(
+        s`h2
+            font-size 1.75rem 
+        `(
           White('6-week portraiture course '), 
           'with Qualified Teacher Status accredited artist Laura Truesdale',
         ),
       ),
 
       s`.Footer
-        padding-top 26cm
+        padding-top 24.75cm
         display flex
 
         .Box {
@@ -266,11 +246,11 @@ s.mount(() =>
         font-size 1.3rem
         text-align center 
       `(
-        Underline('www.brushstrokes.courses'), s`br`,
-        'brushstrokes.courses@gmail.com', s`br`,
+        s`a[href=http://www.brushstrokes.courses]`('www.brushstrokes.courses'), s`br`,
+        s`a[href=mailto:brushstrokes.courses@gmail.com]`('brushstrokes.courses@gmail.com'), s`br`,
         s`span
           font-weight 500
-        `('...or call Laura Truesdale on '), '07854130817', s`br`,
+        `('...or call Laura Truesdale on '), s`a[href=tel:07854130817]`('07854130817'), s`br`,
       ),
     ),
 	),
