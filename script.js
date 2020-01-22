@@ -44,18 +44,22 @@ s.mount(() =>
     }
 	`({
     life: dom => {
-      let   tick
-      const bang = () =>
-        dom.style.transform = `scale(${
-          innerWidth / dom.clientWidth
-        })`
-      
+      let tick 
+
       bang()
 
       onresize = () => (
         clearTimeout(tick),
         tick = setTimeout(bang, 100)
       )
+
+      function bang(){
+        fraction = innerWidth / dom.clientWidth
+
+        dom.style.transform = `scale(${ fraction })`
+
+        document.body.style.maxHeight = dom.clientHeight / fraction + 'px'
+      }
     }
   },
     Stroke({
@@ -215,24 +219,22 @@ s.mount(() =>
             }
           `(
             s`tbody`(
-              s`tr`(
-                s`td`(''), s`td`('8'), s`td`('th February'), s`td`('Life Drawing'            )
-              ),
-              s`tr`(
-                s`td`('1'), s`td`('5'), s`td`('th February'), s`td`('Sketching'               )
-              ),
-              s`tr`(
-                s`td`('2'), s`td`('2'), s`td`('nd February'), s`td`('Soft Pastels'            )
-              ),
-              s`tr`(
-                s`td`('2'), s`td`('9'), s`td`('th February'), s`td`('Acrylic Paint'           )
-              ),
-              s`tr`(
-                s`td`(''), s`td`('7'), s`td`('th March'   ), s`td[rowspan=2]`('Personal Project' )
-              ),
-              s`tr`(
-                s`td`('1'), s`td`('4'), s`td`('th March'   ),
-              ),
+              [
+                [ s`td`,      s`td`('8'), s`td`('th February'), s`td`           ('Life Drawing'     ) ],
+
+                [ s`td`('1'), s`td`('5'), s`td`('th February'), s`td`           ('Sketching'        ) ],
+
+                [ s`td`('2'), s`td`('2'), s`td`('nd February'), s`td`           ('Soft Pastels'     ) ],
+
+                [ s`td`('2'), s`td`('9'), s`td`('th February'), s`td`           ('Acrylic Paint'    ) ],
+
+                [ s`td`,      s`td`('7'), s`td`('th March'   ), s`td[rowspan=2]`('Personal Project' ) ],
+
+                [ s`td`('1'), s`td`('4'), s`td`('th March'   )                                        ],
+              ]
+                .map(tr => 
+                  s`tr`(tr)
+                ),
             ),
           ),
         ),
@@ -246,7 +248,7 @@ s.mount(() =>
         font-size 1.3rem
         text-align center 
       `(
-        s`a[href=http://www.brushstrokes.courses]`('www.brushstrokes.courses'), s`br`,
+        s`a[href=http://www.brushstrokes.courses]`      ('www.brushstrokes.courses'), s`br`,
         s`a[href=mailto:brushstrokes.courses@gmail.com]`('brushstrokes.courses@gmail.com'), s`br`,
         s`span
           font-weight 500
