@@ -1,0 +1,112 @@
+.bssg7ja1f1 {
+	color: white;
+}
+
+.bssg7ja1f2 {
+	border-bottom: 0.075cm solid;
+	padding-bottom: 0.7rem;
+}
+
+.bssg7ja1f3 {
+	margin: -1rem 0px 0px;
+	font-size: 4.6rem;
+}
+
+.bssg7ja1f4 {
+	font-size: 1.75rem;
+}
+
+.bssg7ja1f5 {
+	font-weight: bold;
+}
+
+.bssg7ja1f6 {
+	font-weight: bold;
+}
+
+.bssg7ja1f7 {
+	color: white;
+}
+
+.bssg7ja1f8 {
+	font-size: 1.333rem;
+	font-weight: bold;
+	margin: 0.9rem 0px;
+	border-collapse: collapse;
+}
+
+.bssg7ja1f8 td {
+	padding: 0px;
+}
+
+.bssg7ja1f8 td:nth-child(-n+2) {
+	text-align: right;
+}
+
+.bssg7ja1f8 td:nth-child(n+4) {
+	padding-left: 0.5em;
+}
+
+.bssg7ja1f8 td:nth-child(4) {
+	color: white;
+}
+
+.bssg7ja1f9 {
+	padding-top: 24.75cm;
+	display: flex;
+}
+
+.bssg7ja1f9 .Box {
+	flex: 1 1 50%;
+	box-sizing: border-box;
+}
+
+.bssg7ja1f9 .Box:last-child {
+	padding-left: 1em;
+}
+
+.bssg7ja1f10 {
+	font-weight: 500;
+}
+
+.bssg7ja1f11 {
+	color: rgb(51, 68, 136);
+	padding: 1rem;
+	font-weight: bold;
+	font-size: 1.3rem;
+	text-align: center;
+	margin: 0px !important;
+}
+
+.bssg7ja1f12 {
+	position: relative;
+	box-sizing: border-box;
+	padding: 3rem;
+	transform-origin: 0px 0px;
+}
+
+.bssg7ja1f13 {
+	line-height: 1.5;
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	width: 23cm;
+	height: 42cm;
+	font-size: 1rem;
+	color: rgb(255, 170, 17);
+	background-image: url("./img/sharp_laura_optimized.jpg");
+	background-size: 23cm;
+	background-position: 0px 50%;
+	transform-origin: 0px 0px;
+}
+
+.bssg7ja1f13 p {
+	margin: 1em 0px;
+}
+
+.bssg7ja1f13 a {
+	color: inherit;
+}
